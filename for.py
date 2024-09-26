@@ -4,5 +4,12 @@
 # s- step (шаг- по умолчанию 1)
 # range
 
-for x in range(3, 31, 3)
-    print(x)
+# Первый способ
+for g in range(4, 50,10):
+    print(g)
+# Второй способ
+for x in range (1, 51):
+    if x %10==4:
+        print (x)
+
+
