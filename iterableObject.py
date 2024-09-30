@@ -5,7 +5,7 @@
 string= 'абвгдейка'
 
 for symbol in string:
-    print(symbol)
+    print('symbol')
 
 string2='росток'
 
