@@ -9,6 +9,11 @@ def sum(a, b):
         a = float(a)
         b = float(b)
         res = a + b
+        temp=int(res)
+        diff= res-temp
+        if diff == 0:
+            res=int(res)
+
     except TypeError:
         return 'Складываю числа'
     else:
@@ -26,6 +31,10 @@ def sub(a, b):
         a = float(a)
         b = float(b)
         res = a - b
+        temp = int(res)
+        diff = res - temp
+        if diff == 0:
+            res = int(res)
     except TypeError:
         return 'Вычитаю числа'
     else:
@@ -43,6 +52,10 @@ def truediv(a, b):
         a = float(a)
         b = float(b)
         res = a / b
+        temp = int(res)
+        diff = res - temp
+        if diff == 0:
+            res = int(res)
     except TypeError:
         return 'Делю только числа'
     except ZeroDivisionError:
@@ -62,6 +75,10 @@ def multiply(a, b):
         a = float(a)
         b = float(b)
         res = a * b
+        temp = int(res)
+        diff = res - temp
+        if diff == 0:
+            res = int(res)
     except TypeError:
         return 'Умножаю только числа'
     else:
