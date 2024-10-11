@@ -20,26 +20,26 @@ class App:
         self.canvas.pack(anchor=CENTER, pady=20)  # pady отвечает за отступы y у pad сверху и снизу, padx x по бокам
         # кнопка загрузки
         self.btn = Button(text='Заменить', command=self.load)
-        self.btn.pack(side=LEFT, anchor=N, padx=25, fill=X, expand=True)  # fill и expand  идуть только вместе рядом
+        self.btn.pack(side=LEFT, anchor=N, padx=5, fill=X, expand=True)  # fill и expand  идуть только вместе рядом
         # кнопка размытия
         self.blur = Button(text='Размыть', command=self.blur)
-        self.blur.pack(side=LEFT, anchor=N, padx=25, fill=X, expand=True)
+        self.blur.pack(side=LEFT, anchor=N, padx=5, fill=X, expand=True)
         # кнопка резкость
         self.shrp = Button(text='Добавить резкость', command=self.sharp)
-        self.shrp.pack(side=LEFT, anchor=N, padx=25, fill=X, expand=True)
+        self.shrp.pack(side=LEFT, anchor=N, padx=5, fill=X, expand=True)
         # кнопка отражения по горизонтали
-        self.flp = Button(text='Отразить по горизонтали', command=self.flip)
-        self.flp.pack(side=LEFT, anchor=N, padx=25, fill=X, expand=True)
+        self.flp = Button(text='Отразить', command=self.flip)
+        self.flp.pack(side=LEFT, anchor=N, padx=5, fill=X, expand=True)
         # кнопка возврата к оригиналу
         self.orig = Button(text='Оригинал', command=self.back)
-        self.orig.pack(side=LEFT, anchor=N, padx=25, fill=X, expand=True)
-        # кнопка сохранить
-        self.save_btn = Button(text='Сохранить', command=lambda: self.load_save('save'))
-        self.save_btn.pack(side=LEFT, anchor=N, padx=25, fill=X, expand=True)
+        self.orig.pack(side=LEFT, anchor=N, padx=5, fill=X, expand=True)
+        # Кнопка очистки
+        self.rect_btn = Button(text='Очистить', command=self.make_rect)
+        self.rect_btn.pack(side=LEFT, anchor=N, padx=5, fill=X, expand=True)# fill и expand  идуть только вместе рядом
+        # Кнопка сохранения
+        self.save_btn = Button(text='Сохранить', command=lambda: self.load_save('save')) #через lambda передаем весь объект с тем что ему сделать
+        self.save_btn.pack(side=LEFT, anchor=N, padx=5, fill=X, expand=True)
         self.save_btn['state'] = DISABLED
-        # кнопка очистки
-        self.rect_btn = Button(text='Стереть', command=self.make_rect)
-        self.rect_btn.pack(side=LEFT, anchor=N, padx=25, fill=X, expand=True)  # fill и expand  идуть только вместе рядом
         # self.btn.bind('<ButtonPress-1>', self.load)  # <ButtonPress-1> когда левая кнопка мыши, вызываем клик
         self.left, self.top = 0, 0  # точки привязки к холсту
         self.ext = ''  # расширение файла картинки
@@ -118,11 +118,11 @@ class App:
         self.canvas.create_image(self.left, self.top, anchor=NW, image=self.image)
         self.save_btn['state'] = DISABLED
 
-    # Функционал кнопки возврата к оригиналу
+    # Функционал кнопки сохранить
     def load_save(self, *args):
-        if len(args) == 1 and args[0] == 'save':  # если количество аргументов равно 1  и равен save то распечатаем этот аргумент
+        if len(args) == 1 and args[0] == 'save':
             # print(args[0])
-            fullpath = filedialog.asksaveasfilename(initiafile=f'result.{self.ext}')
+            fullpath = filedialog.asksaveasfilename(initialfile=f'result.{self.ext}')
             if fullpath != '':
                 if f'.{self.ext}' not in fullpath:
                     fullpath += f'.{self.ext}'
@@ -132,9 +132,10 @@ class App:
                 res.save(fullpath)
                 self.save_btn['state'] = DISABLED
 
-    # Функционал кнопки удаления
+
+    # Функционал кнопки "Очистить"
     def make_rect(self):
-        self.canvas.create_rectangle(0, 0, 600, 400, outline='#000000', fill='#80CBC4', width=5)
+        self.canvas.create_rectangle(0, 0, 600, 400, fill='#ffffff')
 
 
 app = App()
