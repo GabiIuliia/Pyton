@@ -1,5 +1,6 @@
 # syntax sugar
 # функция высшего порядка map и filter
+# списочные выражения (list comprehensions)
 users=[
     {'name':'David', 'age': 25},
     {'name':'Matie', 'age': 24},
